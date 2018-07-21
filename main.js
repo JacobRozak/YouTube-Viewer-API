@@ -33,3 +33,18 @@ function initClient(){
         singoutButton.onclick = handleSignoutClick
     })
 }
+function updateSinginStatus(isSigned){
+    if(isSingnedIn){
+        authorizeButton.style.display = 'none'
+        signoutButton.style.display = 'block'
+        content.style.display = 'block'
+        videoContainer.style.display ='block'
+        getChannel(defaChannel)
+
+    }else{
+        authorizeButton.style.display = 'block'
+        signoutButton.style.display = 'none'
+        content.style.display = 'none'
+        videoContainer.style.display ='none'
+    }
+}
