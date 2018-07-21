@@ -13,3 +13,23 @@ const videoContainer= document.getElementById('video-container')
 const defaultChannel = 'Kuba Rożak'
 
 //load auth2 liblary
+function handleClientLoad(){
+    gapi.load('client:auth2',initClient)
+}
+//Init API client liblary and set up sign in listeners 
+
+function initClient(){
+    gapi.client.init({
+        discoveryDocs: DISCOVERY_DOCS,
+        clientId:CLIENT_ID,
+        scope: SCOPES
+    }).then(()=>{
+
+        //lissten fo sign in state changes
+        gapi.auth2.getAuthInstance().isSingnedIn.listen(updateSinginStatus)
+        //handle initial sign in status
+        updateSinginStatus(gapi.auth2.getAuthInstance().isSigned.get())
+        authorizeButton.onclick = handleAuthClick
+        singoutButton.onclick = handleSignoutClick
+    })
+}
