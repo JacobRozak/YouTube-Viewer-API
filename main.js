@@ -48,3 +48,17 @@ function updateSinginStatus(isSigned){
         videoContainer.style.display ='none'
     }
 }
+//handle login 
+function handleAuthClick() {
+    gapi.auth2.getAuthInstance().signIn()
+}
+//handle logout
+function handleSignoutClick(){
+    gapi.auth2.getAuthInstance().signOut()
+}
+
+//get channel from API
+
+function getChannel(channel){
+    console.log(channel)
+}
